@@ -40,8 +40,20 @@ tiempo = Contador()
 tiempo.iniciar()
 
 # una por una
+#for url in img_urls:
+ #   bajar_imagen(url)
+
+threads = []
+
 for url in img_urls:
-    bajar_imagen(url)
+    t = threading.Thread(target=bajar_imagen(url))
+    threads.append(t)
+    t.start()
+
+
+
+
+  
 
 tiempo.finalizar()
 tiempo.imprimir()
